@@ -1,0 +1,18 @@
+{
+  "name": "verification-demo",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npx tsc -b ."
+  },
+  "dependencies": {
+    "@confluxfans/contracts": "^0.3.3",
+    "@ethereum-sourcify/compilers-types": "^1.0.3",
+    "@ethereum-sourcify/lib-sourcify": "^2.1.1",
+    "@openzeppelin/contracts": "^5.3.0",
+    "hardhat": "^2.10.1",
+    "prettier": "^2.7.1",
+    "prettier-plugin-solidity": "^1.0.0-beta.13",
+    "superagent": "^10.2.1",
+    "url": "^0.11.4"
+  }
+}
