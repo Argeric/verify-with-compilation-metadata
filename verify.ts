@@ -14,7 +14,7 @@ import {sendSingleFileVerifyRequest} from "./verification/single-file";
 // open-api: https://api-testnet.confluxscan.net/contract/verifysourcecode
 // contracts/dataFlow/FixedPriceFlow.sol:FixedPriceFlow:0x8ADB395f313D6E85b6672f91C9F6800d970b55B3
 sendJsonInputVerifyRequest(
-'./verification/0d76fa1e0c3cdbb18d383e740a03426f', // Fill in your build-info path. For example: ${__dirname}/artifacts/build-info/12345678901234567890123456789012
+`${__dirname}/verification/0d76fa1e0c3cdbb18d383e740a03426f`, // Fill in your build-info path. For example: ${__dirname}/artifacts/build-info/12345678901234567890123456789012
 "contracts/miner/Mine.sol", // Fill in your contract path. Usually could be seen in build-info.output.sources[contract-path]
 "PoraMine", // Fill in your contract name. Usually could be seen in build-info.output.sources[contract-path].[contract-name]
 '0xf1084A4E9d232D83f33daC3310913A00Ee21B5D4', // Fill in your contract address
@@ -33,7 +33,7 @@ sendJsonInputVerifyRequest(
 // open-api: https://api-testnet.confluxscan.org/contract/verifysourcecode
 // contracts/PRCC_Vesting.sol:PRCC_Vesting:0x80DbB86c7c1bAE053646570709cF68117a2E1574
 sendSingleFileVerifyRequest(
-    `./verification/02fe6bf3803d3515766215d24eb50335`, // Fill in your build-info path. For example: ${__dirname}/artifacts/build-info/12345678901234567890123456789012
+    `${__dirname}/verification/02fe6bf3803d3515766215d24eb50335`, // Fill in your build-info path. For example: ${__dirname}/artifacts/build-info/12345678901234567890123456789012
     "contracts/PRCC_Vesting.sol", // Fill in your contract path. Usually could be seen in build-info.output.sources[contract-path]
     "PRCC_Vesting", // Fill in your contract name. Usually could be seen in build-info.output.sources[contract-path].[contract-name]
     '0xb856d19c518d74ee36964179d82a1a6218d26012', // Fill in your contract address.
