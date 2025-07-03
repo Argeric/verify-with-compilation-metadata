@@ -14,10 +14,10 @@ import {sendSingleFileVerifyRequest} from "./verification/single-file";
 // open-api: https://api-testnet.confluxscan.net/contract/verifysourcecode
 // contracts/dataFlow/FixedPriceFlow.sol:FixedPriceFlow:0x8ADB395f313D6E85b6672f91C9F6800d970b55B3
 sendJsonInputVerifyRequest(
-`${__dirname}/verification/0d76fa1e0c3cdbb18d383e740a03426f`, // Fill in your build-info path. For example: ${__dirname}/artifacts/build-info/12345678901234567890123456789012
-"contracts/miner/Mine.sol", // Fill in your contract path. Usually could be seen in build-info.output.sources[contract-path]
-"PoraMine", // Fill in your contract name. Usually could be seen in build-info.output.sources[contract-path].[contract-name]
-'0xf1084A4E9d232D83f33daC3310913A00Ee21B5D4', // Fill in your contract address
+`${__dirname}/verification/5E770d8D5DDc76E4edAD29E65F3AE4FaBb9cA519`, // Fill in your build-info path. For example: ${__dirname}/artifacts/build-info/12345678901234567890123456789012
+"contracts/TestVerification.sol", // Fill in your contract path. Usually could be seen in build-info.output.sources[contract-path]
+"TestVerification", // Fill in your contract name. Usually could be seen in build-info.output.sources[contract-path].[contract-name]
+'0x5E770d8D5DDc76E4edAD29E65F3AE4FaBb9cA519', // Fill in your contract address
 'https://evmapi-testnet.confluxscan.org/api', // Fill in the URL of verify-sourcecode OpenAPI
 ).catch(err => {
   console.error('verification error', err)

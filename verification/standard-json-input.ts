@@ -1,5 +1,6 @@
 import { Libraries, Metadata, MetadataCompilerSettings, SolidityJsonInput } from "@ethereum-sourcify/lib-sourcify";
 import { sendFormUrlEncodedRequest, splitFullyQualifiedName } from "./util";
+import {MetadataSourceMap} from "@ethereum-sourcify/compilers-types/build/main/CompilationTypes";
 
 export function createJsonInputFromMetadata(metadata: Metadata):
   {
@@ -110,6 +111,7 @@ export async function sendJsonInputVerifyRequest(
   const buildinfo = require(buildInfoFile);
   const json = buildinfo.output.contracts[contractPath][contractName].metadata
   const metadata  = JSON.parse(json) as Metadata
+  metadata.sources = buildinfo.input.sources as MetadataSourceMap
 
   const {
     fullQualifiedName,
