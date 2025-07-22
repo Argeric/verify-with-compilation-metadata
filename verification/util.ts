@@ -120,3 +120,55 @@ export async function getJsonRequest(
         throw err;
     }
 }
+
+export async function postJsonRequest(
+    {
+        url,
+        body,
+        headers = {},
+        timeout = 1000 * 30
+    }) {
+    try {
+        const startTime = Date.now();
+        console.info('Sending request', { url });
+
+        const response = await superagent
+            .post(url)
+            .set({
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                ...headers
+            })
+            .timeout(timeout)
+            .send(body);
+
+        const duration = Date.now() - startTime;
+        console.info('Request completed', {
+            url,
+            status: response.status,
+            duration: `${duration}ms`
+        });
+
+        return {
+            status: response.status,
+            data: response.body,
+            headers: response.headers
+        };
+    } catch (error) {
+        console.error('Request failed', {
+            url,
+            error: error.message,
+            stack: error.stack,
+            response: error.response ? {
+                status: error.response.status,
+                body: error.response.body,
+                headers: error.response.headers
+            } : undefined
+        });
+
+        const err = new Error(error.message || 'HTTP request failed');
+        err['code'] = error.status || 'HTTP_ERROR';
+        err['response'] = error.response;
+        throw err;
+    }
+}
