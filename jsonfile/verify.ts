@@ -42,7 +42,7 @@ import {getJsonRequest, postJsonRequest, sendFormUrlEncodedRequest} from "../ver
 })*/
 
 // vyper single file => openapi
-sendVyperSingleFileVerifyRequestWithFile(
+/*sendVyperSingleFileVerifyRequestWithFile(
     `${__dirname}/0x7db4b759fef3d7c8f489064c3d4aba30db8b0462.singlefile`,
     'CurveStableSwapNG',
     "vyper:0.3.10",
@@ -51,15 +51,15 @@ sendVyperSingleFileVerifyRequestWithFile(
     'https://evmapi-testnet-stage.confluxscan.net/api',
 ).catch(err => {
     console.error('verification error', err)
-})
+})*/
 
 // check stats from openapi
-/*checkVerifyStatus(
-    "ad02924d-d1ba-465c-92f8-15de45ce776f",
+checkVerifyStatus(
+    "edc7f483-4a09-4675-a9e7-a0d1a2d2c927",
     'https://evmapi-testnet-stage.confluxscan.net/api',
 ).catch(err => {
     console.error('checkVerifyStatus error', err)
-})*/
+})
 
 // vyper json input => sourcify
 /*buildVyperJson_0x46f54628().then(request => {
