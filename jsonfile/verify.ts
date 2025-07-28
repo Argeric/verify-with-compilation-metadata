@@ -28,7 +28,7 @@ import {getJsonRequest, postJsonRequest, sendFormUrlEncodedRequest} from "../ver
 })*/
 
 // vyper json input => openapi
-buildVyperStdJson_0x46f54628().then(request => {
+/*buildVyperStdJson_0x46f54628().then(request => {
     sendVyperJsonInputVerifyRequestWithFile(
         request.sourceCode,
         request.contractPath,
@@ -39,11 +39,23 @@ buildVyperStdJson_0x46f54628().then(request => {
     ).catch(err => {
         console.error('verification error', err)
     })
+})*/
+
+// vyper single file => openapi
+sendVyperSingleFileVerifyRequestWithFile(
+    `${__dirname}/0x7db4b759fef3d7c8f489064c3d4aba30db8b0462.singlefile`,
+    'CurveStableSwapNG',
+    "vyper:0.3.10",
+    "0x7db4b759fef3d7c8f489064c3d4aba30db8b0462",
+    'shanghai',
+    'https://evmapi-testnet-stage.confluxscan.net/api',
+).catch(err => {
+    console.error('verification error', err)
 })
 
 // check stats from openapi
 /*checkVerifyStatus(
-    "4e9451d3-42f1-4a15-8a10-e142961a33f8",
+    "ad02924d-d1ba-465c-92f8-15de45ce776f",
     'https://evmapi-testnet-stage.confluxscan.net/api',
 ).catch(err => {
     console.error('checkVerifyStatus error', err)
@@ -142,6 +154,34 @@ export async function sendSingleFileVerifyRequestWithFile(
         optimizationUsed,
         runs,
         evmversion,
+    }
+    await sendFormUrlEncodedRequest(
+        {
+            url,
+            formData,
+        }).then(resp => {
+        console.log(`verify result ${JSON.stringify(resp)}`)
+    })
+}
+
+export async function sendVyperSingleFileVerifyRequestWithFile(
+    singleFileInput: string, // sourceCode
+    contractName: string, // name
+    compilerVersion: string, // version
+    contractAddress: string, // base32
+    evmVersion: string,
+    url: string,
+) {
+    const sourceCode = await readFile(singleFileInput, "utf-8");
+    const formData = {
+        module: 'contract',
+        action: 'verifysourcecode',
+        codeformat: 'vyper-single-file',
+        contractaddress: contractAddress,
+        contractname: contractName,
+        compilerversion: compilerVersion,
+        sourceCode,
+        evmVersion,
     }
     await sendFormUrlEncodedRequest(
         {
@@ -266,26 +306,6 @@ async function buildVyperJson_0x0065bae8() {
     }
 }
 
-async function buildVyperJson_0x732fc2cc() {
-    return {
-        chainId: 71,
-        address: "0x732fc2cc80303740a26c792e18f99538f6c72d52",
-        compilerVersion: "0.3.10+commit.91361694",
-        contractIdentifier: '.:',
-        creationTransactionHash: "0x7dd17c165eb279439c12b53cd676902c07bade3d170a8d0eea84012fab3630ae",
-        stdJsonInput: {
-            language: "Vyper",
-            sources: await buildSources({
-                ".": "./CurveStableSwapNG.vy",
-            }),
-            settings: {
-                evmVersion: "shanghai",
-                optimize: "codesize"
-            },
-        }
-    }
-}
-
 async function buildVyperJson_0x46f54628() {
     return {
         chainId: 71,
@@ -304,7 +324,7 @@ async function buildVyperJson_0x46f54628() {
     }
 }
 
-async function buildVyperStdJson_0x46f54628() {
+async function buildVyperStdJson_0x717Aac6d() {
     const stdJson = {
         language: "Vyper",
         sources: await buildSources({
@@ -335,4 +355,3 @@ async function buildVyperStdJson_0x46f54628() {
         contractAddress: "0x717Aac6d019180c33009D61Db41d373C2e5B64AB",
     }
 }
-
